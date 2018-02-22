@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>home</title>
+			{% load static %}
+			<link rel="stylesheet" type="text/css" href="{% static 'log/style.css' %}" media="screen" title="no title">
+		</head>
+		<body>
+			<h1>Registration</h1>
+			{% if messages %}
+				{%for message in messages%}
+					<h2>{{message}}</h2>
+				{%endfor%}
+			{%endif%}
+				<form action='/process' method='POST'>
+				{%csrf_token%}
+					First Name: <input type="text" name="fname">
+					Last Name: <input type="text" name="lname">
+					Email: <input type="text" name="email">
+					Password: <input type="password" name="pword">
+					Confirm Password: <input type="password" name="cword">
+					<input type="submit" name="submit">
+				</form>
+			<h2>Login</h2>
+				<form action='/log' method='POST'>
+				{%csrf_token%}
+					Email: <input type="text" name="email">
+					Password: <input type="password" name="pword">
+					<input type="submit" name="submit">
+				</form>
+		</body>	
+	</html>
